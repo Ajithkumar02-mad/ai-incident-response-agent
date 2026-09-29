@@ -273,7 +273,7 @@ incident-agent/
 │
 ├── requirements.txt        # Python dependencies
 ├── .gitignore              # Files excluded from Git
-├── .env                    # Local API credentials (not committed)
+├── .env                    # Local API credentials
 └── README.md               # Project documentation
 ```
 
