@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import datetime, timezone
 from dotenv import load_dotenv
 from groq import Groq
 from hindsight_client import Hindsight
@@ -77,8 +78,8 @@ def record_outcome(alert: str, fix_tried: str, worked: bool):
     with memory_client() as m:
         m.retain(bank_id=BANK, content=text, context="fix outcome feedback")
 
+
 def record_incident(service: str, symptom: str, root_cause: str, fix: str, minutes: int):
-    from datetime import datetime, timezone
     text = (f"Incident on {service}: {symptom}. Root cause: {root_cause}. "
             f"Fix: {fix}. Resolved in {minutes} minutes.")
     with memory_client() as m:
@@ -101,5 +102,3 @@ if __name__ == "__main__":
     worked = input("Did it work? (y/n): ").lower() == "y"
     record_outcome(alert, fix, worked)
     print("Outcome saved to memory.")
-
-    
